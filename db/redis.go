@@ -54,12 +54,6 @@ func NewRedis(family, dbType, dbpath string, debugSQL bool) (driver *RedisDriver
 	driver = &RedisDriver{
 		name: dbType,
 	}
-	// when using server command, family is empty.
-	// if 0 < len(family) {
-	// 	if err = driver.NewOvalDB(family); err != nil {
-	// 		return
-	// 	}
-	// }
 
 	log15.Debug("Opening DB.", "db", driver.Name())
 	if err = driver.OpenDB(dbType, dbpath, debugSQL); err != nil {
@@ -71,28 +65,6 @@ func NewRedis(family, dbType, dbpath string, debugSQL bool) (driver *RedisDriver
 
 // NewOvalDB create a OvalDB client
 func (d *RedisDriver) NewOvalDB(family string) error {
-	// switch family {
-	// case c.CentOS:
-	// 	d.ovaldb = c.RedHat
-	// case c.Debian, c.Ubuntu, c.RedHat, c.Oracle,
-	// 	c.OpenSUSE, c.OpenSUSELeap, c.SUSEEnterpriseServer,
-	// 	c.SUSEEnterpriseDesktop, c.SUSEOpenstackCloud,
-	// 	c.Alpine, c.Amazon:
-
-	// 	d.ovaldb = family
-	// default:
-	// 	if strings.Contains(family, "suse") {
-	// 		suses := []string{
-	// 			c.OpenSUSE,
-	// 			c.OpenSUSELeap,
-	// 			c.SUSEEnterpriseServer,
-	// 			c.SUSEEnterpriseDesktop,
-	// 			c.SUSEOpenstackCloud,
-	// 		}
-	// 		return fmt.Errorf("Unknown SUSE. Specify from %s: %s", suses, family)
-	// 	}
-	// 	return fmt.Errorf("Unknown OS Type: %s", family)
-	// }
 	return nil
 }
 
