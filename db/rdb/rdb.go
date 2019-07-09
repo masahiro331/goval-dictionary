@@ -41,6 +41,7 @@ var ovalMap map[string]OvalDB
 
 // NewRDB return RDB driver
 func NewRDB(family, dbType, dbpath string, debugSQL bool) (driver *Driver, locked bool, err error) {
+	ovalMap = map[string]OvalDB{}
 	driver = &Driver{
 		name: dbType,
 	}
@@ -63,7 +64,6 @@ func NewRDB(family, dbType, dbpath string, debugSQL bool) (driver *Driver, locke
 
 // NewOvalDB create a OvalDB client
 func (d *Driver) NewOvalDB(family string) error {
-	ovalMap = map[string]OvalDB{}
 	switch family {
 	case c.Debian:
 		ovalMap[c.Debian] = NewDebian()
